@@ -4,6 +4,7 @@ const page = 'https://www.mifiel.com/en';
 const user = {
   email: 'cnw03484@ckoie.com',
   password: 'Password1',
+  newPassword: 'Password2',
 };
 
 Feature('Mifiel Demo Test');
@@ -54,4 +55,42 @@ Scenario('User Can Manage Email Aliases', (I) => {
   I.waitForElement('div.modal-footer', c.timeout);
   I.waitForElement('button.btn-default', c.timeout);
   I.click('button.btn-default');
+});
+
+Scenario.only('User Can Change Passwords', (I) => {
+  I.amOnPage(page);
+  I.waitForElement('a.btn-login', c.timeout);
+  I.click('a.btn-login');
+  I.waitForElement('input[name="email"]', c.timeout);
+  I.fillField('input[name="email"]', user.email);
+  I.waitForElement('input[name="password"]', c.timeout);
+  I.fillField('input[name="password"]', user.password);
+  I.waitForEnabled('button[type="submit"]', c.timeout);
+  I.click('button[type="submit"]');
+  I.waitForVisible('ul#links', c.timeout);
+  I.waitForElement('li.plain-dropdown', c.timeout);
+  I.click('li.plain-dropdown');
+  I.waitForElement('ul.dropdown-menu', c.timeout);
+  I.waitForVisible('ul.dropdown-menu', c.timeout);
+  I.waitForVisible('//li[a[@ui-sref="user.profile.settings"]]', c.timeout);
+  I.click('//li[a[@ui-sref="user.profile.settings"]]');
+  I.waitForElement('form.account-settings-form', c.timeout);
+  I.waitForElement('input[name="password"]', c.timeout);
+  I.fillField('input[name="password"]', user.newPassword);
+  I.fillField('input[name="password_confirmation"]', user.newPassword);
+  I.fillField('input[name="current_password"]', user.password);
+
+  I.waitForEnabled('button.btn-action', c.timeout);
+  I.click('button.btn-action');
+  I.waitForVisible('div.alert-success', c.timeout);
+
+  I.waitForElement('form.account-settings-form', c.timeout);
+  I.waitForElement('input[name="password"]', c.timeout);
+  I.fillField('input[name="password"]', user.password);
+  I.fillField('input[name="password_confirmation"]', user.password);
+  I.fillField('input[name="current_password"]', user.newPassword);
+
+  I.waitForEnabled('button.btn-action', c.timeout);
+  I.click('button.btn-action');
+  I.waitForVisible('div.alert-success', c.timeout);
 });
