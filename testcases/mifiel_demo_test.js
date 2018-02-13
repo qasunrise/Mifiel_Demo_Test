@@ -1,8 +1,16 @@
 const c = require('../constants.js');
 
 const page = 'https://www.mifiel.com/en';
-const user = {
+const user1 = {
   email: 'cnw03484@ckoie.com',
+  password: 'Password1',
+};
+const user2 = {
+  email: 'xuj90787@cjpeg.com',
+  password: 'Password1',
+};
+const user3 = {
+  email: 'lmn35158@cjpeg.com',
   password: 'Password1',
   newPassword: 'Password2',
 };
@@ -14,9 +22,9 @@ Scenario('User Can LogIn', (I) => {
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
   I.waitForElement('input[name="email"]', c.timeout);
-  I.fillField('input[name="email"]', user.email);
+  I.fillField('input[name="email"]', user1.email);
   I.waitForElement('input[name="password"]', c.timeout);
-  I.fillField('input[name="password"]', user.password);
+  I.fillField('input[name="password"]', user1.password);
   I.waitForEnabled('button[type="submit"]', c.timeout);
   I.click('button[type="submit"]');
   I.waitForVisible('ul#links', c.timeout);
@@ -27,13 +35,13 @@ Scenario('User Can Manage Email Aliases', (I) => {
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
   I.waitForElement('input[name="email"]', c.timeout);
-  I.fillField('input[name="email"]', user.email);
+  I.fillField('input[name="email"]', user2.email);
   I.waitForElement('input[name="password"]', c.timeout);
-  I.fillField('input[name="password"]', user.password);
+  I.fillField('input[name="password"]', user2.password);
   I.waitForEnabled('button[type="submit"]', c.timeout);
   I.click('button[type="submit"]');
   I.waitForVisible('ul#links', c.timeout);
-  I.waitForElement('li.plain-dropdown', c.timeout);
+  I.waitForVisible('li.plain-dropdown', c.timeout);
   I.click('li.plain-dropdown');
   I.waitForElement('ul.dropdown-menu', c.timeout);
   I.waitForVisible('ul.dropdown-menu', c.timeout);
@@ -50,12 +58,14 @@ Scenario('User Can Manage Email Aliases', (I) => {
   I.click('button[type="submit"]');
   I.waitForElement('tr.warning', c.timeout);
   I.waitForElement('//a[contains(@ng-click, "deleteAlias")]', c.timeout);
+  I.waitForEnabled('//a[contains(@ng-click, "deleteAlias")]', c.timeout);
   I.click('//a[contains(@ng-click, "deleteAlias")]');
   I.waitForVisible('div.modal-content', c.timeout);
   I.waitForElement('div.modal-footer', c.timeout);
   I.waitForElement('button.btn-default', c.timeout);
   I.click('button.btn-default');
-  I.waitForInvisible('div.modal-content', c.timeout);
+  I.waitNumberOfVisibleElements('tbody', 1);
+
 });
 
 Scenario('User Can Change Password', (I) => {
@@ -63,13 +73,13 @@ Scenario('User Can Change Password', (I) => {
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
   I.waitForElement('input[name="email"]', c.timeout);
-  I.fillField('input[name="email"]', user.email);
+  I.fillField('input[name="email"]', user3.email);
   I.waitForElement('input[name="password"]', c.timeout);
-  I.fillField('input[name="password"]', user.password);
+  I.fillField('input[name="password"]', user3.password);
   I.waitForEnabled('button[type="submit"]', c.timeout);
   I.click('button[type="submit"]');
   I.waitForVisible('ul#links', c.timeout);
-  I.waitForElement('li.plain-dropdown', c.timeout);
+  I.waitForVisible('li.plain-dropdown', c.timeout);
   I.click('li.plain-dropdown');
   I.waitForElement('ul.dropdown-menu', c.timeout);
   I.waitForVisible('ul.dropdown-menu', c.timeout);
@@ -77,9 +87,9 @@ Scenario('User Can Change Password', (I) => {
   I.click('//li[a[@ui-sref="user.profile.settings"]]');
   I.waitForElement('form.account-settings-form', c.timeout);
   I.waitForElement('input[name="password"]', c.timeout);
-  I.fillField('input[name="password"]', user.newPassword);
-  I.fillField('input[name="password_confirmation"]', user.newPassword);
-  I.fillField('input[name="current_password"]', user.password);
+  I.fillField('input[name="password"]', user3.newPassword);
+  I.fillField('input[name="password_confirmation"]', user3.newPassword);
+  I.fillField('input[name="current_password"]', user3.password);
 
   I.waitForEnabled('button.btn-action', c.timeout);
   I.click('button.btn-action');
@@ -87,9 +97,9 @@ Scenario('User Can Change Password', (I) => {
 
   I.waitForElement('form.account-settings-form', c.timeout);
   I.waitForElement('input[name="password"]', c.timeout);
-  I.fillField('input[name="password"]', user.password);
-  I.fillField('input[name="password_confirmation"]', user.password);
-  I.fillField('input[name="current_password"]', user.newPassword);
+  I.fillField('input[name="password"]', user3.password);
+  I.fillField('input[name="password_confirmation"]', user3.password);
+  I.fillField('input[name="current_password"]', user3.newPassword);
 
   I.waitForEnabled('button.btn-action', c.timeout);
   I.click('button.btn-action');
