@@ -1,6 +1,5 @@
 const c = require('../constants.js');
 
-const page = 'https://www.mifiel.com/en';
 const user1 = {
   email: 'cnw03484@ckoie.com',
   password: 'Password1',
@@ -18,7 +17,7 @@ const user3 = {
 Feature('Mifiel Demo Test');
 
 Scenario('User Can LogIn', (I) => {
-  I.amOnPage(page);
+  I.amOnPage('/');
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
   I.waitForElement('input[name="email"]', c.timeout);
@@ -31,7 +30,7 @@ Scenario('User Can LogIn', (I) => {
 });
 
 Scenario('User Can Manage Email Aliases', (I) => {
-  I.amOnPage(page);
+  I.amOnPage('/');
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
   I.waitForElement('input[name="email"]', c.timeout);
@@ -68,7 +67,7 @@ Scenario('User Can Manage Email Aliases', (I) => {
 });
 
 Scenario('User Can Change Password', (I) => {
-  I.amOnPage(page);
+  I.amOnPage('/');
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
   I.waitForElement('input[name="email"]', c.timeout);

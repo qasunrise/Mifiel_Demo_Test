@@ -8,7 +8,7 @@ exports.config = {
       host: process.env.SELENIUM_HOST || 'localhost', // Selenium url,
       port: process.env.SELENIUM_PORT || '4444', // Selenium url,
       // load variables from the environment and provide defaults
-      url: 'http://todomvc.com/examples/angularjs/#/',
+      url: 'https://www.mifiel.com/en',
       browser: process.profile || 'chrome',
       restart: 'false',
       timeouts: {
