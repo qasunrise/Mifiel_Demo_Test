@@ -66,7 +66,7 @@ Scenario('User Can Manage Email Aliases', (I) => {
   I.waitNumberOfVisibleElements('tbody', 1);
 });
 
-Scenario('User Can Change Password', (I) => {
+Scenario.only('User Can Change Password', (I) => {
   I.amOnPage('/');
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
@@ -101,5 +101,5 @@ Scenario('User Can Change Password', (I) => {
 
   I.waitForEnabled('button.btn-action', c.timeout);
   I.click('button.btn-action');
-  I.waitForVisible('div.alert-success', c.timeout);
+  I.waitForStalenessOf('div.alert-success', c.timeout);
 });
