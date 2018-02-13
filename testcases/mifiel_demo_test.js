@@ -91,7 +91,7 @@ Scenario.only('User Can Change Password', (I) => {
 
   I.waitForEnabled('button.btn-action', c.timeout);
   I.click('button.btn-action');
-  I.waitForVisible('div.alert-success', c.timeout);
+  I.waitForStalenessOf('div.alert-success', c.timeout);
 
   I.waitForElement('form.account-settings-form', c.timeout);
   I.waitForElement('input[name="password"]', c.timeout);
