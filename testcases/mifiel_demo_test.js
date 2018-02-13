@@ -57,7 +57,7 @@ Scenario('User Can Manage Email Aliases', (I) => {
   I.click('button.btn-default');
 });
 
-Scenario('User Can Change Passwords', (I) => {
+Scenario('User Can Change Password', (I) => {
   I.amOnPage(page);
   I.waitForElement('a.btn-login', c.timeout);
   I.click('a.btn-login');
