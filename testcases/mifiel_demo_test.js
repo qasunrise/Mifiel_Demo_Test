@@ -92,7 +92,22 @@ Scenario('User Can Change Password', (I) => {
   I.waitForEnabled('button.btn-action', c.timeout);
   I.click('button.btn-action');
   I.waitForStalenessOf('div.alert-success', c.timeout);
+  I.waitForElement('li.logout-link', c.timeout);
+  I.click('li.logout-link');
 
+  I.waitForElement('input[name="email"]', c.timeout);
+  I.fillField('input[name="email"]', user3.email);
+  I.waitForElement('input[name="password"]', c.timeout);
+  I.fillField('input[name="password"]', user3.newPassword);
+  I.waitForEnabled('button[type="submit"]', c.timeout);
+  I.click('button[type="submit"]');
+  I.waitForVisible('ul#links', c.timeout);
+  I.waitForVisible('li.plain-dropdown', c.timeout);
+  I.click('li.plain-dropdown');
+  I.waitForElement('ul.dropdown-menu', c.timeout);
+  I.waitForVisible('ul.dropdown-menu', c.timeout);
+  I.waitForVisible('//li[a[@ui-sref="user.profile.settings"]]', c.timeout);
+  I.click('//li[a[@ui-sref="user.profile.settings"]]');
   I.waitForElement('form.account-settings-form', c.timeout);
   I.waitForElement('input[name="password"]', c.timeout);
   I.fillField('input[name="password"]', user3.password);
