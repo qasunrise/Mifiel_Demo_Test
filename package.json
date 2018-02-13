@@ -1,0 +1,43 @@
+{
+  "name": "todo-codeceptjs-tests",
+  "version": "1.0.0",
+  "description": "todo tests",
+  "main": "codecept.conf.js",
+  "dependencies": {
+    "eslint": "4.5.0",
+    "eslint-config-airbnb": "15.1.0",
+    "eslint-plugin-codeceptjs": "0.2.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.3.0",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
+    "mochawesome": "^2.3.1",
+    "mochawesome-screenshots": "^1.5.4",
+    "rosie": "1.6.0",
+    "selenium-server": "^3.8.1",
+    "selenium-standalone": "^6.12.0",
+    "webdriverio": "^4.9.11"
+  },
+  "devDependencies": {
+    "codeceptjs": "^1.1.4"
+  },
+  "scripts": {
+    "test": "codeceptjs run --steps --reporter mochawesome"
+  },
+  "author": "qasunrise",
+  "license": "ISC",
+  "eslintConfig": {
+    "globals": {
+      "xScenario": false
+    },
+    "extends": "airbnb",
+    "plugins": [
+      "codeceptjs"
+    ],
+    "env": {
+      "codeceptjs/codeceptjs": true
+    }
+  }
+}

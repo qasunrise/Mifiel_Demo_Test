@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+path_to_this_script=$(dirname $0) # independence of cwd
+cd $path_to_this_script/.. # cd to root of project
+./node_modules/.bin/eslint -f html -o ./output/eslint.html $@ "testcases/**/*.js" "pages/**/*.js" steps_file.js init_helper.js codecept.conf.js
