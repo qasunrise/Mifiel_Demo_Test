@@ -55,6 +55,7 @@ Scenario('User Can Manage Email Aliases', (I) => {
   I.waitForElement('div.modal-footer', c.timeout);
   I.waitForElement('button.btn-default', c.timeout);
   I.click('button.btn-default');
+  I.wait(3);
 });
 
 Scenario('User Can Change Password', (I) => {
