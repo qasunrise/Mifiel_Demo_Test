@@ -65,7 +65,6 @@ Scenario('User Can Manage Email Aliases', (I) => {
   I.waitForElement('button.btn-default', c.timeout);
   I.click('button.btn-default');
   I.waitNumberOfVisibleElements('tbody', 1);
-
 });
 
 Scenario('User Can Change Password', (I) => {
